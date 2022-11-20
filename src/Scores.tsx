@@ -1,12 +1,21 @@
 import { Typography } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { DuolingoContext } from "./DuolingoContext";
+import { User } from "./types/user"
 
 const Scores = () => {
-  const duo = useContext(DuolingoContext);
-  const XP = duo.getXP();
-  return <Typography variant="body1">Nikesh: {XP}</Typography>;
+  const { getXP } = useContext(DuolingoContext);
+  const [usersXP, setUsersXP] = useState<User[]>([])
+
+  useEffect(() => {
+    getXP()
+      .then(setUsersXP)
+  }, [getXP])
+
+  return <>
+    {usersXP.map(u => <Typography variant="body1">{u.name}: {u.XP}</Typography>)}
+  </>
 };
 
 export default Scores;
