@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/units-of-shame/static/js/main.3dc81b6a.js",
+    "index.html": "/units-of-shame/index.html",
+    "main.3dc81b6a.js.map": "/units-of-shame/static/js/main.3dc81b6a.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.3dc81b6a.js"
+  ]
+}
