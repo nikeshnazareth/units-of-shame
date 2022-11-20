@@ -1,6 +1,6 @@
 import { Typography, Box } from "@mui/material";
 import { DuolingoProvider } from "./DuolingoContext";
-import Scores from "./Scores"
+import Scores from "./Scores";
 
 function App() {
   return (
