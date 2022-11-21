@@ -23,7 +23,11 @@ export class DuolingoProvider extends Component<IProps, IState> {
     Promise.all(
       this.state.competitors
         .map((username) => `${baseURL}/${username}`)
-        .map((url) => fetch(url).then((res) => res.json()))
+        .map((url) =>
+          fetch(url)
+            .then((res) => res.json())
+            .catch((err) => console.log(err))
+        )
     );
 
   render() {
