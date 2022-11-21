@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Card, Stack, Typography, Avatar } from "@mui/material";
 import { useContext, useState, useEffect } from "react";
 
 import { DuolingoContext } from "./DuolingoContext";
@@ -10,17 +10,41 @@ const Scores = () => {
 
   useEffect(() => {
     Promise.all(getCompetitors().map(getXP))
-      .then((users) => users.sort((a, b) => b.XP - a.XP))
+      .then((users) =>
+        users.sort((a, b) => b.XP - b.baseline - (a.XP - a.baseline))
+      )
+      .then((user) => {
+        console.log(user);
+        return user;
+      })
       .then(setUsersXP);
   }, [getXP, getCompetitors]);
 
   return (
     <Container style={{ padding: "50px" }}>
-      <Stack spacing={2}>
+      <Stack spacing={2} style={{ alignItems: "center" }}>
         {usersXP.map((u) => (
-          <Typography variant="body1" key={u.username}>
-            {u.name}: {u.XP}
-          </Typography>
+          <Card key={u.username} style={{ width: 300, padding: 20 }}>
+            <Container
+              style={{
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
+                marginBottom: 20,
+              }}
+            >
+              <Avatar
+                alt={u.name}
+                src={u.picture}
+                sx={{ width: 70, height: 70 }}
+              />
+            </Container>
+            <Typography variant="subtitle1">Total: {u.XP}</Typography>
+            <Typography variant="subtitle1">Baseline: {u.baseline}</Typography>
+            <Typography variant="h6" style={{ color: "green" }}>
+              +{u.XP - u.baseline}
+            </Typography>
+          </Card>
         ))}
       </Stack>
     </Container>

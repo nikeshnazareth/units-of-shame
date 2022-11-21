@@ -23,6 +23,7 @@ export class DuolingoProvider extends Component<IProps, IState> {
   getXP = (cfg: UserConfig): Promise<User> =>
     fetch(`${baseURL}/${cfg.username}`)
       .then((res) => res.json())
+      .then((data) => Object.assign(data, cfg))
       .catch((err) => console.log(err));
 
   getCompetitors = (): UserConfig[] => this.state.competitors;
