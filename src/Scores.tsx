@@ -1,27 +1,29 @@
-import { Typography } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import { useContext, useState, useEffect } from "react";
 
 import { DuolingoContext } from "./DuolingoContext";
 import { User } from "./types/user";
 
 const Scores = () => {
-  const { getXP } = useContext(DuolingoContext);
+  const { getXP, getCompetitors } = useContext(DuolingoContext);
   const [usersXP, setUsersXP] = useState<User[]>([]);
 
   useEffect(() => {
-    getXP()
+    Promise.all(getCompetitors().map(getXP))
       .then((users) => users.sort((a, b) => b.XP - a.XP))
       .then(setUsersXP);
-  }, [getXP]);
+  }, [getXP, getCompetitors]);
 
   return (
-    <>
-      {usersXP.map((u) => (
-        <Typography variant="body1" key={u.username}>
-          {u.name}: {u.XP}
-        </Typography>
-      ))}
-    </>
+    <Container style={{ padding: "50px" }}>
+      <Stack spacing={2}>
+        {usersXP.map((u) => (
+          <Typography variant="body1" key={u.username}>
+            {u.name}: {u.XP}
+          </Typography>
+        ))}
+      </Stack>
+    </Container>
   );
 };
 
