@@ -15,7 +15,7 @@ const Scores = () => {
   return (
     <>
       {usersXP.map((u) => (
-        <Typography variant="body1">
+        <Typography variant="body1" key={u.username}>
           {u.name}: {u.XP}
         </Typography>
       ))}
