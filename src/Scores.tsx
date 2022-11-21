@@ -9,7 +9,9 @@ const Scores = () => {
   const [usersXP, setUsersXP] = useState<User[]>([]);
 
   useEffect(() => {
-    getXP().then(setUsersXP);
+    getXP()
+      .then((users) => users.sort((a, b) => b.XP - a.XP))
+      .then(setUsersXP);
   }, [getXP]);
 
   return (
