@@ -1,7 +1,13 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
 const Duolingo = require("duolingo-api");
+
+let corsOptions = {
+  origin: ["http://localhost:3000"],
+};
+app.use(cors(corsOptions));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
