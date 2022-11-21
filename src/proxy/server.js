@@ -5,7 +5,7 @@ const port = process.env.PORT || 5000;
 const Duolingo = require("duolingo-api");
 
 let corsOptions = {
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "https://nikeshnazareth.github.io"],
 };
 app.use(cors(corsOptions));
 
