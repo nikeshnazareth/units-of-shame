@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/units-of-shame/static/js/main.2743f51b.js",
+    "main.js": "/units-of-shame/static/js/main.4434d200.js",
     "index.html": "/units-of-shame/index.html",
-    "main.2743f51b.js.map": "/units-of-shame/static/js/main.2743f51b.js.map"
+    "main.4434d200.js.map": "/units-of-shame/static/js/main.4434d200.js.map"
   },
   "entrypoints": [
-    "static/js/main.2743f51b.js"
+    "static/js/main.4434d200.js"
   ]
 }
