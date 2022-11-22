@@ -22,7 +22,7 @@ export const userConfig: UserConfig[] = [
     picture: "https://ca.slack-edge.com/T73Q07TDG-UH9CYNDJ5-76eccdbf6f9f-512",
   },
   {
-    username: "fragio-",
+    username: "frangio-",
     baseline: 4074,
     picture: "https://ca.slack-edge.com/T73Q07TDG-U74LUAAFQ-717c0c3c6d1e-512"
   },
