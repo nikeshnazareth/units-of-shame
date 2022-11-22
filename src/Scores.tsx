@@ -13,10 +13,6 @@ const Scores = () => {
       .then((users) =>
         users.sort((a, b) => b.XP - b.baseline - (a.XP - a.baseline))
       )
-      .then((user) => {
-        console.log(user);
-        return user;
-      })
       .then(setUsersXP);
   }, [getXP, getCompetitors]);
 
