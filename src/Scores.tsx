@@ -41,11 +41,17 @@ const Scores = () => {
                 marginBottom: 20,
               }}
             >
-              <Avatar
-                alt={u.name}
-                src={u.picture}
-                sx={{ width: 70, height: 70 }}
-              />
+              <a
+                href={`https://duolingo.com/profile/${u.username}`}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Avatar
+                  alt={u.name}
+                  src={u.picture}
+                  sx={{ width: 70, height: 70 }}
+                />
+              </a>
             </Container>
             <Typography variant="subtitle1">Total: {u.XP}</Typography>
             <Typography variant="subtitle1">Baseline: {u.baseline}</Typography>
@@ -59,7 +65,9 @@ const Scores = () => {
               </Typography>
             ) : null}
             {/* replace the icon with ThumbsDownIcon */}
-            { Array(shame(u)).map((_, i) => (<Icon key={i}></Icon>)) }
+            {Array(shame(u)).map((_, i) => (
+              <Icon key={i}></Icon>
+            ))}
           </Card>
         ))}
       </Stack>
