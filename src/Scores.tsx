@@ -1,11 +1,5 @@
-import {
-  Container,
-  Card,
-  Stack,
-  Typography,
-  Avatar,
-  Icon,
-} from "@mui/material";
+import { Container, Card, Stack, Typography, Avatar } from "@mui/material";
+import { ThumbDownAlt } from "@mui/icons-material";
 import { useContext, useState, useEffect } from "react";
 import { DuolingoContext } from "./DuolingoContext";
 import { User } from "./types/user";
@@ -59,14 +53,13 @@ const Scores = () => {
             {shortfall(u) > 0 ? (
               <Typography
                 variant="h6"
-                style={{ color: shame(u) ? "red" : "orange" }}
+                style={{ color: shame(u) > 0 ? "red" : "orange" }}
               >
                 -{shortfall(u)}
               </Typography>
             ) : null}
-            {/* replace the icon with ThumbsDownIcon */}
-            {Array(shame(u)).map((_, i) => (
-              <Icon key={i}></Icon>
+            {[...Array(shame(u))].map((_, i) => (
+              <ThumbDownAlt key={i}></ThumbDownAlt>
             ))}
           </Card>
         ))}
