@@ -36,4 +36,9 @@ export const userConfig: UserConfig[] = [
     baseline: -959,
     picture: "https://ca.slack-edge.com/T73Q07TDG-U01D1C1JETW-03822a87768a-512",
   },
+  {
+    username: "trianamicaela",
+    baseline: 16282,
+    picture: "https://ca.slack-edge.com/T73Q07TDG-UBJQ9BVPE-a95184f00054-512",
+  },
 ];
