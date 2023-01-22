@@ -2,7 +2,8 @@ import React, { Component, createContext } from "react";
 import { User, UserConfig } from "./types/user";
 import { userConfig } from "./user-config";
 
-const baseURL = "https://duoproxy.nfshost.com/user";
+// obtained from https://github.com/JinKim7/duolingo-api/blob/master/src/Duolingo.js#L6
+const baseURL = "https://www.duolingo.com/2017-06-30/users";
 
 interface IProps {
   children: React.ReactNode;
@@ -21,10 +22,16 @@ export class DuolingoProvider extends Component<IProps, IState> {
   }
 
   getXP = (cfg: UserConfig): Promise<User> =>
-    fetch(`${baseURL}/${cfg.username}`)
+    fetch(`${baseURL}?username=${cfg.username}`)
       .then((res) => res.json())
-      .then((data) => Object.assign(data, cfg))
-      .catch((err) => console.log(err));
+      .then((data) => data.users[0])
+      .then((user) =>
+        Object.assign(cfg, {
+          name: user.name,
+          username: user.username,
+          XP: user.totalXp,
+        })
+      );
 
   getCompetitors = (): UserConfig[] => this.state.competitors;
 
